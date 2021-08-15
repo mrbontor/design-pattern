@@ -1,4 +1,3 @@
-const args = require('minimist')(process.argv.slice(2));
 const bodyParser = require('body-parser')
 const express = require('express')
 
