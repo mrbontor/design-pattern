@@ -118,12 +118,21 @@ const deleteData = async (req, res) => {
     try {
         if(null === ID) return res.status(NOT_FOUND);
 
+<<<<<<< HEAD
         let del = await db.findAndDelete(USER_COLLECTION, { _id: db.newID(ID)})
         logging.debug(`[DELETE][DELETE] >>>>> ${JSON.stringify(del)}`)
 
         res.status(SUCCESS_NO_CONTENT).send({})
     } catch (e) {
         logging.error(`[DELETE][POST] >>>>> ${JSON.stringify(e.stack)}`)
+=======
+        let del = await db.findOneAndDelete(USER_COLLECTION, { _id: db.newID(ID)})
+        logging.debug(`[DELETE][DELETE] >>>>> ${JSON.stringify(del)}`)
+
+        res.status(SUCCESS_NO_CONTENT)
+    } catch (e) {
+        logging.error(`[CREATE][POST] >>>>> ${JSON.stringify(e.stack)}`)
+>>>>>>> 93fecb30330c44bfe574a808d5058e2cc6c42906
         results.error = 'ServerError'
         res.status(SERVER_ERROR).send(results)
     }
